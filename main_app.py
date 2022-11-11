@@ -48,7 +48,7 @@ class PDFroter(Resource):
                 rot_full_path = "{}\\{}".format(roated_file_path, roated_file_name)
             
             print(roated_file_name)
-            with open(roated_file_name, 'wb') as f:
+            with open(rot_full_path, 'wb') as f:
                 writer.write(f)
             ret_data = {
                 'Success':'File rotated successfully',
@@ -103,7 +103,7 @@ class PDFroter(Resource):
                 rot_full_path = "{}\\{}.pdf".format(roated_file_path, roated_file_name)
             
             print(roated_file_name)
-            with open(roated_file_name, 'wb') as f:
+            with open(rot_full_path, 'wb') as f:
                 writer.write(f)
             ret_data = {
                 'Success':'File rotated successfully',
