@@ -1,7 +1,7 @@
 from flask import Flask, request
 from flask_restful import Resource, Api
 import json
-from PyPDF2 import PdfFileReader, PdfFileWriter
+from PyPDF2 import  PdfWriter, PdfReader
 from sys import platform
 
 app = Flask(__name__)
@@ -20,9 +20,9 @@ class PDFroter(Resource):
             # rotate angle check
             if rot_angle not in [90, 180, 270]:
                 return ({'Error':'Rotation angle should be 90, 180 or 270'}, 400)
-            reader = PdfFileReader(file_path, 'rb')
-            writer = PdfFileWriter()
-            total_pages = reader.getNumPages()
+            reader = PdfReader(file_path, 'rb')
+            writer = PdfWriter()
+            total_pages = len(reader.pages)
 
             # page inbound check
             if page_num > total_pages:
@@ -60,7 +60,9 @@ class PDFroter(Resource):
     
     def get(self):
         """Roate upto nth page"""
+        print('test')
         req_data = request.args
+        print(req_data)
         for i in req_data:
             if i not in ['file_path', 'rot_ang', 'page_num']:
                 return ({'Error':'Invalid key, use keys:- file_path, rot_ang, page_num'}, 400)
@@ -73,11 +75,12 @@ class PDFroter(Resource):
         # rotate angle check
         if rot_angle not in [90, 180, 270]:
             return ({'Error':'Rotation angle should be 90, 180 or 270'}, 400)
+        print('debug 2')
 
         try:
-            reader = PdfFileReader(file_path, 'rb')
-            writer = PdfFileWriter()
-            total_pages = reader.getNumPages()
+            reader = PdfReader(file_path, 'rb')
+            writer = PdfWriter()
+            total_pages = len(reader.pages)
 
             # page inbound check
             if page_num > total_pages:
