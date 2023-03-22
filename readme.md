@@ -3,7 +3,7 @@
 2. GET Request rotates upto Nth page
 
 ### A. With POST request - Roate Nth page only
-1. POST request API endpoint: http://127.0.0.1:5000/rotate_pdf/
+1. POST request API endpoint: http://127.0.0.1:5000/pdf/
 2. JSON data is required to be sent in the request body with following format:
 
 ```
@@ -24,7 +24,7 @@
 ```
 
 ### B. With GET request - Roate upto Nth page
-1. GET request API endpoint: http://127.0.0.1:5000/rotate_pdf/
+1. GET request API endpoint: http://127.0.0.1:5000/pdf/
 2. JSON data is required to be sent in the request body with following format:
 
 ```
